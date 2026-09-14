@@ -1,0 +1,88 @@
+/*- Typography -*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font, inherit);
+  color: var(--heading);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 2.25rem 0 0.9rem;
+}
+
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.25rem; }
+h4, h5, h6 { font-size: 1.05rem; }
+
+p, ul, ol {
+  margin: 0 0 1.3rem;
+}
+
+ul, ol {
+  padding-left: 1.4rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+strong {
+  color: var(--heading);
+}
+
+em {
+  color: var(--text-2);
+}
+
+blockquote {
+  margin: 1.75rem 0;
+  padding: 1rem 1.4rem;
+  font-style: italic;
+  color: var(--text-2);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  p, ul, ol {
+    margin: 0;
+  }
+  p + p {
+    margin-top: 1rem;
+  }
+}
+
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  color: var(--text-2);
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.12em 0.4em;
+}
+
+pre {
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.3rem;
+  overflow-x: auto;
+  line-height: 1.55;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  code {
+    font-size: 0.85em;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--border);
+  margin: 2.5rem auto;
+  width: 100%;
+}

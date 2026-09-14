@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  maxmobsh:
+    restart: unless-stopped
+    image: jekyll-run
+    # volumes:
+    #   - /home/britmob/maxmob-sh-site/logs:/nginx
+    ports:
+      - "8009:80"
+      - "8109:81"

@@ -1,0 +1,84 @@
+/*
+ * Base: reset, design tokens, global element styles.
+ * Layout is a single centered column everywhere — nothing floats off-axis.
+ */
+
+// kept only for syntax.scss compatibility
+$background-color: #FFFFFF;
+$text-color: #333333;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, img, figure, blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/*- Design tokens: defaults are the "mist" scheme; others override in themes.scss -*/
+
+:root {
+  --bg: #EEF1F4;
+  --surface: #FFFFFF;
+  --surface-2: #F4F6F8;
+  --text: #2A3037;
+  --text-2: #4B535C;
+  --text-3: #8B939C;
+  --heading: #1B2127;
+  --accent: #38658F;
+  --accent-strong: #2C5175;
+  --accent-contrast: #FFFFFF;
+  --border: #E1E6EA;
+  --border-strong: #C6CFD7;
+  --shadow-sm: 0 1px 2px rgba(23, 32, 42, 0.05), 0 4px 12px rgba(23, 32, 42, 0.06);
+  --shadow-md: 0 2px 4px rgba(23, 32, 42, 0.06), 0 12px 28px rgba(23, 32, 42, 0.13);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --heading-font: inherit;
+  --grad: linear-gradient(90deg, #38658F, #7FA6C9);
+}
+
+/*- Global -*/
+
+html {
+  background-color: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* thin accent strip pinned to the very top of the viewport */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad);
+  z-index: 50;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+  &:hover,
+  &:focus {
+    color: var(--accent-strong);
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}

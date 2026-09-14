@@ -1,0 +1,18 @@
+<header id="masthead">
+  <div class="masthead-inner">
+    <a class="logo" href="https://maxmob.sh/">
+      <h1><span>max</span>mobley</h1>
+    </a>
+    <nav class="site-nav">
+      <!-- Nav pages -->
+      {% for page in site.pages %}
+        {% if page.layout == "page" %}
+          <a href="{% if site.baseurl == "/" %}{{ page.url }}{% else %}{{ page.url | prepend: site.baseurl }}{% endif %}" title="{{ page.title }}">{{ page.title }}</a>
+        {% endif %}
+      {% endfor %}
+
+      <!-- Nav links -->
+      {% include link.html %}
+    </nav>
+  </div>
+</header>

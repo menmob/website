@@ -1,0 +1,71 @@
+/*- Color schemes -*/
+/*
+ * Pick a scheme with `color_scheme` in _config.yml:
+ *   mist    - cool light gray, white cards, steel-blue accent (the default, in :root)
+ *   classic - pure white and near-black, monochrome accent
+ *   paper   - warm cream, serif headings, terracotta accent
+ *   ink     - near-black dark mode, soft blue accent
+ */
+
+.scheme-classic {
+  --bg: #F5F5F5;
+  --surface: #FFFFFF;
+  --surface-2: #F0F0F0;
+  --text: #2B2B2B;
+  --text-2: #4E4E4E;
+  --text-3: #8F8F8F;
+  --heading: #111111;
+  --accent: #111111;
+  --accent-strong: #444444;
+  --accent-contrast: #FFFFFF;
+  --border: #E4E4E4;
+  --border-strong: #CFCFCF;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.12);
+  --grad: linear-gradient(90deg, #111111, #6E6E6E);
+}
+
+.scheme-paper {
+  --bg: #F6F1E7;
+  --surface: #FDFBF6;
+  --surface-2: #F2ECDF;
+  --text: #2C2519;
+  --text-2: #57503F;
+  --text-3: #99907A;
+  --heading: #211B10;
+  --accent: #9C5730;
+  --accent-strong: #7C4222;
+  --accent-contrast: #FFFFFF;
+  --border: #E7DFCF;
+  --border-strong: #D3C7AC;
+  --shadow-sm: 0 1px 2px rgba(74, 58, 28, 0.06), 0 4px 12px rgba(74, 58, 28, 0.07);
+  --shadow-md: 0 2px 4px rgba(74, 58, 28, 0.07), 0 12px 28px rgba(74, 58, 28, 0.14);
+  --heading-font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --grad: linear-gradient(90deg, #9C5730, #C98A5E);
+}
+
+.scheme-ink {
+  --bg: #0E1013;
+  --surface: #171A1F;
+  --surface-2: #1E2228;
+  --text: #CFD4DA;
+  --text-2: #A6ADB5;
+  --text-3: #6E767F;
+  --heading: #EDF0F3;
+  --accent: #7AA2F7;
+  --accent-strong: #A8C1FA;
+  --accent-contrast: #0E1013;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.45), 0 14px 34px rgba(0, 0, 0, 0.5);
+  --grad: linear-gradient(90deg, #7AA2F7, #B48EF5);
+
+  /* the logo's original colors are unreadable on a dark bar */
+  .logo h1 {
+    color: #EDF0F3;
+    span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}

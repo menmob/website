@@ -1,0 +1,253 @@
+/* -- Layout: slim header bar, dense centered content -- */
+
+/* Masthead: a compact bar, logo top-left, nav right */
+
+#masthead {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.masthead-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  padding: 0.65rem 1.25rem;
+}
+
+/* the wordmark — pinned to the original theme's exact font, size, and colors */
+.logo {
+  display: inline-block;
+  h1 {
+    margin: 0;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.3;
+    color: #333333;
+    span {
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 300;
+    }
+    @media (max-width: 600px) {
+      font-size: 32px;
+    }
+  }
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.25rem 1.3rem;
+  a {
+    color: var(--text-2);
+    font-weight: 500;
+    font-size: 0.92rem;
+    &:hover,
+    &:focus {
+      color: var(--accent);
+    }
+  }
+}
+
+/* Main column */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+/* prose and post lists sit on a narrower, reading-width column */
+#posts,
+#post-page,
+.pagination {
+  max-width: 46rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* about-page content spans the full main column, same width as the gallery */
+#page {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* centered section headings on pages, with a small accent bar */
+#page > h3 {
+  text-align: center;
+  margin-top: 2rem;
+  &::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--grad);
+    margin: 0.4rem auto 0;
+  }
+  &:first-child {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Posts listing: plain list, like the original theme */
+
+#posts {
+  list-style: none;
+  padding: 0;
+
+  li.post {
+    h3 {
+      margin: 0 0 0.15rem;
+      font-size: 1.35rem;
+      a {
+        color: var(--heading);
+        &:hover,
+        &:focus {
+          color: var(--accent);
+        }
+      }
+    }
+    p {
+      color: var(--text-2);
+      margin-bottom: 0;
+    }
+  }
+
+  .post + .post::before {
+    display: block;
+    content: '';
+    width: 5rem;
+    height: 1px;
+    margin: 1.5rem auto;
+    background-color: var(--border-strong);
+  }
+}
+
+.by-line {
+  display: block;
+  color: var(--text-3);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Post page */
+
+#post-page {
+  .post-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    h1 {
+      margin: 0 0 0.35rem;
+    }
+    .by-line {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Photos in content: framed and centered */
+
+.content img,
+#page > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
+}
+
+.page-item {
+  display: inline-block;
+  min-width: 2.3rem;
+  padding: 0.35rem 0.85rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-2);
+  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+a.page-item:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+  color: var(--accent);
+}
+
+.page-item--current {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.page-item--disabled {
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--text-3);
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.85rem;
+  padding: 1.25rem 1.25rem 1.75rem;
+  &::before {
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 1px;
+    background-color: var(--border-strong);
+    margin: 0 auto 1rem;
+  }
+  a {
+    color: var(--text-2);
+    &:hover { color: var(--accent); }
+  }
+}
+
+/* Small screens */
+
+@media (max-width: 600px) {
+  .masthead-inner {
+    justify-content: center;
+    text-align: center;
+    padding: 0.8rem 1rem;
+  }
+  .site-nav {
+    justify-content: center;
+  }
+  main {
+    padding-top: 1.25rem;
+  }
+  .post-card {
+    padding: 1.1rem 1.2rem 1rem;
+  }
+}
