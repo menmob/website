@@ -8,7 +8,8 @@ author:
   url: "https://maxmob.sh"
 
 # Build settings
-baseurl: "" # Change this to your relative path (ex: /blog/), or leave empty for the site root
+# baseurl is intentionally unset — GitHub Pages injects it at build time
+# (/website on github.io, site root on a custom domain)
 markdown: kramdown
 source: .
 destination: ./_site
