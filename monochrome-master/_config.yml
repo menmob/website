@@ -8,7 +8,7 @@ author:
   url: "https://maxmob.sh"
 
 # Build settings
-baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl: "" # Change this to your relative path (ex: /blog/), or leave empty for the site root
 markdown: kramdown
 source: .
 destination: ./_site

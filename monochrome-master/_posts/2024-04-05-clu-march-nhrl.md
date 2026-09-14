@@ -14,14 +14,14 @@ In combat robotics, there are generally two types of kinetic spinner robots: ver
 
 So, with the design specifications out of the way, I started CADing. I designed 3 full revisions of Clu before I felt I had a bot that was actually worth building. This was mainly because Clu was my first 3lb bot, and was also a more complex type of bot in general (kiwi-drive). I think it's neat to see the progression of the designs eventually reaching something that looks good and could *possibly* function well. If I had to estimate, I probably spent ~120 hours in CAD for the final revision that I ended up building, and ~250 hours for all three revisions.
 
-![Clu's CAD in Solidworks](/static/clu_cad.png){: width="500" }
+![Clu's CAD in Solidworks]({{ site.baseurl }}/static/clu_cad.png){: width="500" }
 *Clu's (Nearly) Final Design*
 
 
 
 It's somewhat easy to design a bot. But what does it take to manufacture and build one? I had never done any machining or complex mechanical assembly before this project, so I had a lot to learn. But luckily the 3lb weight class is very accessible, as a good chunk of the material in the bot can be 3D printed out of a rubbery plastic called TPU. TPU is absurdly impact absorbent and has very good layer adhesion, making it a much better candidate for combat robotics than PLA or PETG, which would both shatter basically immediately against a metal spinner. TPU is easy enough to print on any modern 3D printer, and my Bambu Labs A1 Mini does a great job with it.
 
-![An entirely full build plate of bot parts](/static/clu_3dp_full_bed.png){: width="500" }
+![An entirely full build plate of bot parts]({{ site.baseurl }}/static/clu_3dp_full_bed.png){: width="500" }
 *Filling My Build Plate With TPU Parts*
 
 
@@ -32,7 +32,7 @@ So, where do you actually fight these bots? As a kid, I kind of assumed that the
 
 So, once I had a good idea of my timeline on finishing Clu, I signed up for the March 2024 NHRL event. Inevitably, I cut it really close, but I was able to get Clu assembled a day or two before the event. The day of the event comes, and I wake up at 4am in order to be there when the doors open. 
 
-![Clu on a scale with electronics piled on top, scale reads 2.983lb](/static/clu_scale_electronics_external.png){: width="500" }
+![Clu on a scale with electronics piled on top, scale reads 2.983lb]({{ site.baseurl }}/static/clu_scale_electronics_external.png){: width="500" }
 *Clu, Mildly Assembled, Just Barely Within Weight*
 
 

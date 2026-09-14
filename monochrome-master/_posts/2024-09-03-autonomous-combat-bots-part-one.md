@@ -20,7 +20,7 @@ So how do we prevent humans from gaining an upper hand, then? We act erraticly, 
 
 To follow this strategy of randomness and confusion, I decided on a kiwi drive motion platform. Kiwi drive is a type of holonomic drive, which means that it can move in any direction while facing any direction. This significantly increases the mobility of the robot compared to the standard tank drive that many combat robots use. Tank drive does not allow for significant rotation while moving forward or backwards, and high level driving with it requires significant skill. This is in part due to the gyroscopic procession that occurs when robots with a spinning weapon attempt to turn, which causes the robot to tilt upwards and lose traction. Kiwi drive does not prevent this gyroscopic procession, but it does have a signifcantly wider footprint which reduces the amount of tilt. However, because we are using holonomic drive, we can turn the bot *while* we move towards the opponent, giving us more time to turn during an attack, which allows us to rotate slower, reducing tilt. 
 
-![A gif comparing movement between kiwi drive and tank drive](/static/kiwi_vs_tank.gif){: width="1000"}
+![A gif comparing movement between kiwi drive and tank drive]({{ site.baseurl }}/static/kiwi_vs_tank.gif){: width="1000"}
 *Kiwi Drive vs. Tank Drive*
 
 
@@ -44,18 +44,18 @@ My current goals for autonomous control do not include pinning opponents. I just
 
 **My (WIP) Autonomous Architecture**
 
-![An image of my software + hardware architecture](/static/clu_architecture_diagram.png){: width="1000"}
+![An image of my software + hardware architecture]({{ site.baseurl }}/static/clu_architecture_diagram.png){: width="1000"}
 *Most of the hardware needed to run this architecture*
 
 *Hardware*
 
-I am using Clu, my 3lb beetleweight combat robot, for this autonomous framework. You can read more about Clu in my [blog post about fighting with it at NHRL](/clu-march-nhrl).
+I am using Clu, my 3lb beetleweight combat robot, for this autonomous framework. You can read more about Clu in my [blog post about fighting with it at NHRL]({{ site.baseurl }}/clu-march-nhrl).
 
 *External Sensors*
 
 My system currently uses two external cameras: one with an infrared-only lens, and one with a standard lens. We feed the standard camera into a custom-trained YOLOv8 object detection model which outputs bounding boxes for full size robots, minibots, housebots, wheels, belts, and generic debris. We can get about 40fps with this model on my Macbook Air M3 (which I intend to use cageside for real fights), and it is used as our primary source of arena state data. A 40Hz refresh rate is *okay* for feeding control algorithms, but it's not great. It will give us a 25ms response time at best, which is still 10x better than a human's ~250ms reaction time, but it could still get better. Hence the second (infrared) camera for higher frequency data. We use the infrared camera to track the precise position of *our* robot in the field by putting retroreflective tape on the robot and blasting it with IR. The tape reflects the IR, which is then picked up by the camera, allowing us to track our robot's position with much higher accuracy and refresh rate (due to the lower computational overhead of pure computer vision vs. a full ML model). 
 
-![A gif showing IR points getting tracked in 2D space](/static/ir_tracking_clu.gif){: width="1000"}
+![A gif showing IR points getting tracked in 2D space]({{ site.baseurl }}/static/ir_tracking_clu.gif){: width="1000"}
 *An early example of tracking on-robot IR markers* 
 
 My testing has shown we can get ~100Hz refresh rate with this system with reasonable accuracy. This is actually a very simplified version of what externally-sensed motion tracking systems have used for decades. Basically all motion capture systems have used nearly this exact technique of putting simple IR retroreflectors on humans and kept the bulky, expensive sensors positioned outside the capture area. They just use hundreds of thousands of dollars of camera equipment and have developed MUCH better software. This simple version should work fine for my purposes though, because I really just need X/Y tracking while the robot is on the floor. It will only ever need to track 2D motion, and there shouldn't be any obstruction of the tracking markers (in theory). Because of these simpler requirements, I can use a single camera and pretty easily build a map of positions of camera pixels to physical points in the arena. With one camera, I can only track 2 degrees of freedom (X and Y on the floor of the arena), so I won't be able to track the robot midair, but this is fine, because I don't need to know where the robot is in 3D space midair, only that it is in the air at all.
@@ -81,7 +81,7 @@ With all of this in mind, I have come up with four guiding ideas when it comes t
 
 After reviewing many of the best combat robot drivers' fights, I decided to go all in on one offensive strategy: smothering the opponent to the point that they never get a chance to attack you back. If you never let your opponent into a stable state, they can never find their bearings and attack you. This is especially important with particularly dangerous spinners, because when you don't let their weapon spin up, they can never hit you with their full power. Two great examples of bots that use this strategy are Eruption and Lynx: both are vertical spinning "beater bars", which are generally the most efficient vertical spinning weapons for maximum energy transfer. These two bots are unquestionably some of the best beetleweight combat robots to ever exist, and they are both known for their devastatingly effective driving. Their strategy has a very high skill requirement, though: with tank drive (which both of these robots use), when you go to line up a shot, you must perfectly align yourself, and then hit the gas and hope you hit the opponent. This is because you cannot really turn at all while driving forward due to the gyroscopic effects of a vertical weapon mentioned earlier. Once you start moving forward, you either hit your opponent, or come to nearly a full stop and rotate towards them again. You must repeat this over and over with absurd precision, which is difficult for even the absolute best human drivers. This problem is solved for us in two ways, however. First, as discussed, computers can just tell exactly how they need to position themselves to be perfectly aligned towards their opponent, within the error of the tracking system. Second, we are using kiwi-drive, which allows us to (somewhat) modify our trajectory while driving towards our opponent. We still have some limit on how fast we can rotate, but we can translate side to side to without issue, giving us the ability to correct for an opponent moving or a bad initial trajectory.
 
-![Picutre of Lynx & Eruption](/static/lynx_eruption.png){: width="1000"}
+![Picutre of Lynx & Eruption]({{ site.baseurl }}/static/lynx_eruption.png){: width="1000"}
 *Lynx & Eruption* 
 
 Not only is "ram the hell out of your opponent" rather easy to implement, but it can still be successful despite less-than-perfect tracking precision, making it perfect as a primary offensive strategy. It is very likely that the precision of the vision-based tracking will not be great at first, so it is important to begin with a simple strategy that can still work despite some issues. Ideally we will be tracking the orientation of our opponent (we can get ours by fusing our onboard sensors and external tracking) with the YOLO object tracking model, but this is a difficult task, and I am not confident we will be able to get consistently accurate orientations in the first run of this system. If we do have the orientation of opponents, however, we will try to move in an arc that brings us to the opponent's side, instead of ramming them head on and possibly going weapon-to-weapon. Weapon-to-weapon exchanges can be fine if you have designed a very robust weapon assembly, but that is not a given, especially when I am a less experienced bot builder, so it is best to avoid such a high-energy collision when possible.
@@ -94,7 +94,7 @@ The defense strategy I had initially thought up was called "Hills of Danger". Th
 
 This was not a novel idea, and there is an existing algorithm called Potential Fields that accomplishes the same idea slightly differently, but with many improvements. Each dangerous entity in the arena will "push" the robot away, like a positive magnetic field would push a negative field away. These "push" forces are added together to create an acceleration force on our robot which moves it away from the sum of the danger in the arena. I also made a few modifications I've made to prevent the robot from finding an equilibrium and staying still, such as adding a constantly changing goal force which "pulls" the robot towards a safe area of the arena.
 
-![A graph showing the potential fields algorithm](/static/potential_fields.png){: width="500"}
+![A graph showing the potential fields algorithm]({{ site.baseurl }}/static/potential_fields.png){: width="500"}
 *Potential Fields Goal & Defense Planning* - *Courtesy of Denis Konstantinov*
 
 
@@ -125,7 +125,7 @@ The external state manager will make decisions to change between states over a l
 
 At the moment, I have nearly finished the external systems (tracking & state management), but the onboard systems need some more attention. This is mainly because I began working on the external tracking system, since it was the most difficult of the major components. Then, I began working on the external state management in order to test the tracking system, as I was in France for the summer without access to any of my robot hardware and electronics equipment. I've implemented the potential fields defensive strategy, as well as what I call the "bullet" offense, which is basically just picking the enemy that is best to just... drive straight into. This makes sure there is no other debris/enemy/etc in the way of us and this picked bot. Then we just drive into them full speed with our weapon.
 
-![A gif showing simulated offensive and defensive capabilities of A3](/static/clu_offense_defense.gif){: width="1000"}
+![A gif showing simulated offensive and defensive capabilities of A3]({{ site.baseurl }}/static/clu_offense_defense.gif){: width="1000"}
 *Simulation of offensive / defensive strategies on a tracked fight* 
 
 ***Going Forward***

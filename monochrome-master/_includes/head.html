@@ -11,9 +11,9 @@
 	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl | replace: '//', '/' }}">
 
 	<!-- RSS -->
-	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+	<link href="{{ "/atom.xml" | prepend: site.baseurl | replace: '//', '/' }}" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="{{ "/img/favicon.png" | prepend: site.baseurl | replace: '//', '/' }}">
 
 </head>
